@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7fb" />
+    <meta
+      name="description"
+      content="A calm, organized student portal for classes, grades, announcements, and more."
+    />
+    <title>Campusly — Student Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#dashboard" aria-label="Campusly home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M5 10.2 16 4l11 6.2L16 16.5 5 10.2Z" fill="currentColor" />
+              <path d="M9 13.1v7.1c4.2 3.2 9.8 3.2 14 0v-7.1l-7 4-7-4Z" fill="currentColor" opacity=".7" />
+              <path d="M27 11v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span>campusly<span class="brand-period">.</span></span>
+        </a>
+
+        <div class="workspace-label">WORKSPACE</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a class="nav-link active" href="#dashboard" data-view="dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="4" rx="1.5"/><rect x="13.5" y="9.5" width="7" height="11" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a class="nav-link" href="#schedule" data-view="schedule">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M7.5 3.5v3M16.5 3.5v3M3.5 9.5h17M8 13h3M8 16h6"/></svg>
+            <span>Class schedule</span>
+          </a>
+          <a class="nav-link" href="#grades" data-view="grades">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-7"/><path d="M3 20.5h18"/></svg>
+            <span>Grades</span>
+          </a>
+          <a class="nav-link" href="#announcements" data-view="announcements">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></svg>
+            <span>Announcements</span>
+            <span class="nav-count" id="announcement-count">3</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="help-card">
+            <span class="help-icon" aria-hidden="true">✦</span>
+            <p>Need a little help?</p>
+            <span>Your campus, all in one place.</span>
+            <a href="#profile" data-view="profile">View your profile <span aria-hidden="true">↗</span></a>
+          </div>
+          <button class="sidebar-profile" type="button" data-view="profile">
+            <span class="avatar avatar-small" data-avatar>JD</span>
+            <span class="sidebar-profile-copy">
+              <strong data-profile-name>Jordan Davis</strong>
+              <span>Student account</span>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <button class="icon-button menu-button" id="menu-button" type="button" aria-label="Open navigation" aria-expanded="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+          <div class="breadcrumb"><span>Student portal</span><span class="breadcrumb-divider">/</span><strong id="breadcrumb-current">Dashboard</strong></div>
+          <div class="topbar-actions">
+            <div class="term-picker">
+              <span class="term-dot" aria-hidden="true"></span>
+              <label class="sr-only" for="term-select">Academic term</label>
+              <select id="term-select">
+                <option>Spring 2025</option>
+                <option>Fall 2024</option>
+                <option>Spring 2024</option>
+              </select>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+            </div>
+            <button class="icon-button notification-button" type="button" data-view="announcements" aria-label="View announcements">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></svg>
+              <span class="notification-dot" aria-hidden="true"></span>
+            </button>
+            <button class="topbar-avatar avatar" type="button" data-view="profile" aria-label="Open student profile" data-avatar>JD</button>
+          </div>
+        </header>
+
+        <div class="page-content">
+          <section class="view-section active" id="dashboard-view" data-section="dashboard">
+            <div class="welcome-row">
+              <div>
+                <div class="eyebrow" id="dashboard-date"><span class="eyebrow-line"></span> TUESDAY, APRIL 15, 2025</div>
+                <h1>Good morning, <span data-first-name>Jordan</span> <span class="wave" aria-hidden="true">✦</span></h1>
+                <p class="page-subtitle">A fresh day to learn something new. You’ve got this.</p>
+              </div>
+              <button class="button button-primary" type="button" data-view="schedule">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                View my schedule
+              </button>
+            </div>
+
+            <div class="stats-grid">
+              <article class="stat-card">
+                <div class="stat-top"><span class="stat-icon icon-lilac"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span><span class="stat-trend trend-up">+2 this week</span></div>
+                <div class="stat-value" data-dashboard-stat="courses">5</div><div class="stat-label">Enrolled courses</div>
+                <div class="stat-foot"><span>Keep up the great work</span><span class="tiny-sparkline spark-purple" aria-hidden="true">▂ ▄ ▃ ▆ ▅ ▇</span></div>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top"><span class="stat-icon icon-mint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z"/></svg></span><span class="stat-trend trend-up">+0.4 this term</span></div>
+                <div class="stat-value" data-dashboard-stat="gpa">3.82<span class="stat-unit">/ 4.0</span></div><div class="stat-label">Current GPA</div>
+                <div class="stat-foot"><span>Looking really good</span><span class="tiny-sparkline spark-green" aria-hidden="true">▂ ▃ ▄ ▃ ▆ ▇</span></div>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top"><span class="stat-icon icon-peach"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><span class="stat-trend trend-neutral">Next: 10:30 AM</span></div>
+                <div class="stat-value" data-dashboard-stat="classes">3</div><div class="stat-label">Classes today</div>
+                <div class="stat-foot"><span>First class in 45 minutes</span><span class="tiny-sparkline spark-orange" aria-hidden="true">▆ ▄ ▅ ▃ ▅ ▇</span></div>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top"><span class="stat-icon icon-blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h4"/></svg></span><span class="stat-trend trend-warm">Due soon</span></div>
+                <div class="stat-value" data-dashboard-stat="assignments">2</div><div class="stat-label">Assignments due</div>
+                <div class="stat-foot"><span>One due tomorrow</span><span class="tiny-sparkline spark-blue" aria-hidden="true">▃ ▅ ▄ ▆ ▃ ▇</span></div>
+              </article>
+            </div>
+
+            <div class="dashboard-grid">
+              <section class="panel schedule-panel">
+                <div class="panel-heading">
+                  <div><div class="section-kicker">YOUR DAY</div><h2>Today’s schedule</h2></div>
+                  <button class="text-button" type="button" data-view="schedule">Full schedule <span aria-hidden="true">→</span></button>
+                </div>
+                <div class="today-list" id="today-list">
+                  <article class="class-row class-current">
+                    <div class="class-time"><strong>10:30</strong><span>AM</span><i></i></div>
+                    <div class="class-color color-purple"></div>
+                    <div class="class-info"><strong>Introduction to Psychology</strong><span>PSY 101 · Room B204</span></div>
+                    <span class="class-tag tag-now">UP NEXT</span>
+                  </article>
+                  <article class="class-row">
+                    <div class="class-time"><strong>12:00</strong><span>PM</span><i></i></div>
+                    <div class="class-color color-blue"></div>
+                    <div class="class-info"><strong>Creative Writing Workshop</strong><span>ENG 220 · Arts Building 18</span></div>
+                    <span class="class-duration">1h 15m</span>
+                  </article>
+                  <article class="class-row">
+                    <div class="class-time"><strong>2:00</strong><span>PM</span><i></i></div>
+                    <div class="class-color color-orange"></div>
+                    <div class="class-info"><strong>Statistics for Social Science</strong><span>STA 205 · Science Hall 302</span></div>
+                    <span class="class-duration">1h 30m</span>
+                  </article>
+                </div>
+                <div class="schedule-note"><span class="note-sun" aria-hidden="true">☼</span><span>You have a <strong>1 hour break</strong> between classes. Time for a coffee?</span></div>
+              </section>
+
+              <section class="panel announcements-panel">
+                <div class="panel-heading">
+                  <div><div class="section-kicker">STAY IN THE LOOP</div><h2>Announcements</h2></div>
+                  <button class="icon-button subtle-button" type="button" data-view="announcements" aria-label="See all announcements"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+                </div>
+                <div class="announcement-preview-list">
+                  <article class="announcement-preview">
+                    <span class="announcement-mark mark-lilac">✦</span><div><div class="announcement-meta"><span class="announcement-category">CAMPUS LIFE</span><span>2h ago</span></div><h3>Spring festival is almost here!</h3><p>Join us on the quad this Friday for food, music, and fun.</p></div>
+                  </article>
+                  <article class="announcement-preview">
+                    <span class="announcement-mark mark-peach">!</span><div><div class="announcement-meta"><span class="announcement-category category-orange">ACADEMICS</span><span>Yesterday</span></div><h3>Library hours extended for finals</h3><p>The main library will stay open until midnight starting April 21.</p></div>
+                  </article>
+                  <article class="announcement-preview">
+                    <span class="announcement-mark mark-mint">↗</span><div><div class="announcement-meta"><span class="announcement-category category-green">OPPORTUNITY</span><span>Apr 12</span></div><h3>Summer internship applications</h3><p>Applications are open through the end of the month.</p></div>
+                  </article>
+                </div>
+                <button class="all-announcements" type="button" data-view="announcements">See all announcements <span aria-hidden="true">→</span></button>
+              </section>
+
+              <section class="panel grades-panel">
+                <div class="panel-heading">
+                  <div><div class="section-kicker">KEEP IT UP</div><h2>Grade overview</h2></div>
+                  <button class="text-button" type="button" data-view="grades">All grades <span aria-hidden="true">→</span></button>
+                </div>
+                <div class="grade-overview">
+                  <div class="grade-donut" id="dashboard-grade-donut" role="img" aria-label="Current GPA 3.82 out of 4.0"><div><strong>3.82</strong><span>GPA</span></div></div>
+                  <div class="grade-legend" id="dashboard-grade-legend">
+                    <div><span class="legend-dot dot-purple"></span><span>Psychology</span><strong>A</strong></div>
+                    <div><span class="legend-dot dot-blue"></span><span>Creative Writing</span><strong>A−</strong></div>
+                    <div><span class="legend-dot dot-orange"></span><span>Statistics</span><strong>B+</strong></div>
+                    <div><span class="legend-dot dot-green"></span><span>World History</span><strong>A</strong></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel assignment-panel">
+                <div class="panel-heading">
+                  <div><div class="section-kicker">ON YOUR RADAR</div><h2>Upcoming assignments</h2></div>
+                  <span class="assignment-count">2 this week</span>
+                </div>
+                <div class="assignment-list" id="assignment-list">
+                  <article class="assignment-row"><span class="assignment-icon icon-lilac"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><div class="assignment-info"><strong>Reflection paper: Memory &amp; learning</strong><span>PSY 101 · 800–1,000 words</span></div><span class="due-date due-soon"><strong>Apr 16</strong><span>TOMORROW</span></span></article>
+                  <article class="assignment-row"><span class="assignment-icon icon-blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M6 16l4-5 3 2 5-7"/><circle cx="18" cy="6" r="1.5"/></svg></span><div class="assignment-info"><strong>Problem set 6: Probability</strong><span>STA 205 · Submit online</span></div><span class="due-date"><strong>Apr 18</strong><span>FRIDAY</span></span></article>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <section class="view-section" id="schedule-view" data-section="schedule">
+            <div class="page-heading-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> <span data-term-eyebrow>SPRING 2025</span></div><h1>Class schedule</h1><p class="page-subtitle">Your weekly rhythm, all in one place.</p></div><span class="schedule-summary" id="schedule-summary">5 courses <span>·</span> 14 credits</span></div>
+            <div class="panel week-panel">
+              <div class="week-heading"><div><div class="section-kicker">WEEK AT A GLANCE</div><h2 id="week-range">April 14 – 20, 2025</h2></div><div class="week-controls"><button type="button" class="icon-button subtle-button" aria-label="Previous week" id="prev-week"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><button type="button" class="icon-button subtle-button" aria-label="Next week" id="next-week"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+              <div class="week-grid" id="week-grid">
+                <div class="week-day"><div class="day-heading"><span>MON</span><strong data-week-date>14</strong></div><div class="week-class week-purple"><strong>Psychology</strong><span>9:00 – 10:15</span><small>B204</small></div><div class="week-class week-green"><strong>World History</strong><span>1:00 – 2:15</span><small>H105</small></div></div>
+                <div class="week-day today-column"><div class="day-heading"><span>TUE</span><strong data-week-date>15</strong></div><div class="week-class week-purple"><strong>Psychology</strong><span>10:30 – 11:45</span><small>B204</small></div><div class="week-class week-blue"><strong>Creative Writing</strong><span>12:00 – 1:15</span><small>Arts 18</small></div><div class="week-class week-orange"><strong>Statistics</strong><span>2:00 – 3:30</span><small>Science 302</small></div></div>
+                <div class="week-day"><div class="day-heading"><span>WED</span><strong data-week-date>16</strong></div><div class="week-class week-yellow"><strong>Art &amp; Culture</strong><span>11:00 – 12:15</span><small>Arts 106</small></div><div class="week-class week-green"><strong>World History</strong><span>1:00 – 2:15</span><small>H105</small></div></div>
+                <div class="week-day"><div class="day-heading"><span>THU</span><strong data-week-date>17</strong></div><div class="week-class week-purple"><strong>Psychology</strong><span>10:30 – 11:45</span><small>B204</small></div><div class="week-class week-blue"><strong>Creative Writing</strong><span>12:00 – 1:15</span><small>Arts 18</small></div><div class="week-class week-orange"><strong>Statistics</strong><span>2:00 – 3:30</span><small>Science 302</small></div></div>
+                <div class="week-day"><div class="day-heading"><span>FRI</span><strong data-week-date>18</strong></div><div class="week-class week-yellow"><strong>Art &amp; Culture</strong><span>11:00 – 12:15</span><small>Arts 106</small></div></div>
+              </div>
+              <div class="schedule-legend"><span><i class="legend-dot dot-purple"></i>Social sciences</span><span><i class="legend-dot dot-blue"></i>Writing</span><span><i class="legend-dot dot-orange"></i>Mathematics</span><span><i class="legend-dot dot-green"></i>Humanities</span></div>
+            </div>
+            <div class="panel course-list-panel"><div class="panel-heading"><div><div class="section-kicker">THIS TERM</div><h2>Your courses</h2></div></div><div class="course-list" id="course-list"><div class="course-list-row"><span class="course-swatch color-purple"></span><div><strong>Introduction to Psychology</strong><span>PSY 101 · Prof. Amelia Carter</span></div><b>3 credits</b></div><div class="course-list-row"><span class="course-swatch color-blue"></span><div><strong>Creative Writing Workshop</strong><span>ENG 220 · Prof. Noah Reed</span></div><b>3 credits</b></div><div class="course-list-row"><span class="course-swatch color-orange"></span><div><strong>Statistics for Social Science</strong><span>STA 205 · Prof. Maya Patel</span></div><b>4 credits</b></div><div class="course-list-row"><span class="course-swatch color-green"></span><div><strong>World History: 1900 to Present</strong><span>HIS 140 · Prof. Lucas Morgan</span></div><b>3 credits</b></div><div class="course-list-row"><span class="course-swatch color-yellow"></span><div><strong>Art &amp; Culture</strong><span>ART 115 · Prof. Sophie Chen</span></div><b>1 credit</b></div></div></div>
+          </section>
+
+          <section class="view-section" id="grades-view" data-section="grades">
+            <div class="page-heading-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> <span data-term-eyebrow>SPRING 2025</span></div><h1>Your grades</h1><p class="page-subtitle" id="grades-subtitle">You’re making steady progress. Keep going!</p></div><span class="gpa-pill"><span>✦</span> Term GPA <strong id="term-gpa">3.82</strong></span></div>
+            <div class="grade-stats-grid"><article class="grade-stat"><span class="stat-icon icon-lilac"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z"/></svg></span><div><span>Cumulative GPA</span><strong id="cumulative-gpa">3.78 <small>/ 4.0</small></strong></div></article><article class="grade-stat"><span class="stat-icon icon-mint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><span>Credits completed</span><strong id="credits-completed">42 <small>credits</small></strong></div></article><article class="grade-stat"><span class="stat-icon icon-peach"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span><div><span>Credits this term</span><strong id="credits-term">14 <small>credits</small></strong></div></article></div>
+            <div class="panel grades-table-panel"><div class="panel-heading"><div><div class="section-kicker">COURSE PERFORMANCE</div><h2 id="grades-table-title">Spring 2025 grades</h2></div><span class="grade-updated" id="grade-updated">Last updated Apr 14</span></div><div class="table-wrap"><table><thead><tr><th>COURSE</th><th>INSTRUCTOR</th><th>GRADE</th><th>POINTS</th><th>PROGRESS</th></tr></thead><tbody id="grades-table-body"><tr><td><span class="table-course"><i class="color-purple"></i><span><strong>Introduction to Psychology</strong><small>PSY 101 · 3 credits</small></span></span></td><td>Amelia Carter</td><td><span class="letter-grade grade-a">A</span></td><td>96.4%</td><td><div class="progress-track"><span class="progress-purple" style="width:96.4%"></span></div></td></tr><tr><td><span class="table-course"><i class="color-blue"></i><span><strong>Creative Writing Workshop</strong><small>ENG 220 · 3 credits</small></span></span></td><td>Noah Reed</td><td><span class="letter-grade grade-a-minus">A−</span></td><td>91.2%</td><td><div class="progress-track"><span class="progress-blue" style="width:91.2%"></span></div></td></tr><tr><td><span class="table-course"><i class="color-orange"></i><span><strong>Statistics for Social Science</strong><small>STA 205 · 4 credits</small></span></span></td><td>Maya Patel</td><td><span class="letter-grade grade-b">B+</span></td><td>88.7%</td><td><div class="progress-track"><span class="progress-orange" style="width:88.7%"></span></div></td></tr><tr><td><span class="table-course"><i class="color-green"></i><span><strong>World History: 1900 to Present</strong><small>HIS 140 · 3 credits</small></span></span></td><td>Lucas Morgan</td><td><span class="letter-grade grade-a">A</span></td><td>94.8%</td><td><div class="progress-track"><span class="progress-green" style="width:94.8%"></span></div></td></tr><tr><td><span class="table-course"><i class="color-yellow"></i><span><strong>Art &amp; Culture</strong><small>ART 115 · 1 credit</small></span></span></td><td>Sophie Chen</td><td><span class="letter-grade grade-a-minus">A−</span></td><td>92.5%</td><td><div class="progress-track"><span class="progress-yellow" style="width:92.5%"></span></div></td></tr></tbody></table></div><p class="grade-disclaimer">Grades shown are for demonstration purposes and may not reflect official academic records.</p></div>
+          </section>
+
+          <section class="view-section" id="announcements-view" data-section="announcements">
+            <div class="page-heading-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> CAMPUS UPDATES</div><h1>Announcements</h1><p class="page-subtitle">The latest news, notes, and opportunities for you.</p></div><button class="button button-secondary" type="button" id="mark-all-read">Mark all as read</button></div>
+            <div class="announcement-filters" role="group" aria-label="Filter announcements"><button class="filter-chip selected" type="button" data-filter="all">All updates <span>3</span></button><button class="filter-chip" type="button" data-filter="Campus life">Campus life</button><button class="filter-chip" type="button" data-filter="Academics">Academics</button><button class="filter-chip" type="button" data-filter="Opportunity">Opportunities</button></div>
+            <div class="announcement-list-full">
+              <article class="announcement-card unread" data-category="Campus life"><span class="announcement-large-icon mark-lilac">✦</span><div class="announcement-card-body"><div class="announcement-meta"><span class="announcement-category">CAMPUS LIFE</span><span>April 15, 2025 · 2 hours ago</span><span class="unread-label">NEW</span></div><h2>Spring festival is almost here!</h2><p>Take a break from your books and join us on the quad this Friday, April 18, from 3–8 PM. There’ll be live music, local food trucks, student art, and a few surprises. Bring a friend and come celebrate the season with us!</p><div class="announcement-footer"><span>Student Life Office</span><button type="button" class="read-toggle">Mark as read</button></div></div></article>
+              <article class="announcement-card unread" data-category="Academics"><span class="announcement-large-icon mark-peach">!</span><div class="announcement-card-body"><div class="announcement-meta"><span class="announcement-category category-orange">ACADEMICS</span><span>April 14, 2025 · Yesterday</span><span class="unread-label">NEW</span></div><h2>Library hours extended for finals</h2><p>Starting April 21, the main library will be open until midnight on weekdays to give you more room to study. The quiet study floor and group rooms are available, and free coffee will be served in the lobby after 7 PM.</p><div class="announcement-footer"><span>University Library</span><button type="button" class="read-toggle">Mark as read</button></div></div></article>
+              <article class="announcement-card unread" data-category="Opportunity"><span class="announcement-large-icon mark-mint">↗</span><div class="announcement-card-body"><div class="announcement-meta"><span class="announcement-category category-green">OPPORTUNITY</span><span>April 12, 2025 · 3 days ago</span><span class="unread-label">NEW</span></div><h2>Summer internship applications are open</h2><p>Looking for hands-on experience this summer? Applications are now open for paid internships with our community partners. Explore roles in communications, research, and youth programs. Apply through the Career Center by April 30.</p><div class="announcement-footer"><span>Career Center</span><button type="button" class="read-toggle">Mark as read</button></div></div></article>
+            </div>
+          </section>
+
+          <section class="view-section" id="profile-view" data-section="profile">
+            <div class="page-heading-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> YOUR CAMPUS ID</div><h1>Student profile</h1><p class="page-subtitle">A little snapshot of you and your campus life.</p></div><button class="button button-primary" type="button" id="edit-profile-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5 5 5M4 20l4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Z"/></svg>Edit profile</button></div>
+            <div class="profile-layout"><section class="panel profile-card"><div class="profile-cover"><span class="cover-orb orb-one"></span><span class="cover-orb orb-two"></span><span class="cover-spark">✦</span></div><div class="profile-main"><div class="avatar profile-avatar" data-avatar>JD</div><span class="profile-status"><i></i> Enrolled student</span><h2 data-profile-name>Jordan Davis</h2><p class="profile-major">Psychology <span>·</span> Class of 2026</p><div class="profile-divider"></div><div class="profile-details"><div><span>STUDENT ID</span><strong>2023-04821</strong></div><div><span>EMAIL ADDRESS</span><strong data-profile-email>jordan.davis@campus.edu</strong></div><div><span>ACADEMIC ADVISOR</span><strong>Dr. Amelia Carter</strong></div><div><span>ENROLLMENT</span><strong>Full-time · 14 credits</strong></div></div></div></section><div class="profile-side"><section class="panel profile-info-card"><div class="panel-heading"><div><div class="section-kicker">ABOUT ME</div><h2>My details</h2></div></div><p>Curious mind, aspiring researcher, and always on the hunt for the best iced coffee on campus. Currently exploring the fascinating world of cognitive psychology.</p><div class="interest-tags"><span>Psychology</span><span>Reading</span><span>Photography</span><span>Mindfulness</span></div></section><section class="panel profile-info-card"><div class="panel-heading"><div><div class="section-kicker">CAMPUS LIFE</div><h2>Getting involved</h2></div></div><div class="involvement-row"><span class="involvement-icon icon-lilac">✳</span><div><strong>Psychology Society</strong><span>Member since Fall 2023</span></div></div><div class="involvement-row"><span class="involvement-icon icon-peach">♡</span><div><strong>Campus Volunteer Network</strong><span>Community outreach</span></div></div></section></div></div>
+          </section>
+          <footer class="page-footer"><span>Made for your next big thing <span aria-hidden="true">✦</span></span><span>Campusly student portal · Demo experience</span></footer>
+        </div>
+      </main>
+    </div>
+    <div class="mobile-backdrop" id="mobile-backdrop"></div>
+
+    <dialog class="profile-dialog" id="profile-dialog" aria-labelledby="dialog-title">
+      <form method="dialog" class="dialog-close-form"><button class="icon-button subtle-button" aria-label="Close dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form>
+      <div class="section-kicker">YOUR DETAILS</div><h2 id="dialog-title">Edit your profile</h2><p class="dialog-intro">Keep your information up to date. Changes are saved on this device.</p>
+      <form id="profile-form" class="profile-form">
+        <label for="profile-name">Full name</label><input id="profile-name" name="name" type="text" maxlength="60" required />
+        <label for="profile-email">Email address</label><input id="profile-email" name="email" type="email" maxlength="100" required />
+        <div class="dialog-actions"><button class="button button-secondary" type="button" id="cancel-profile">Cancel</button><button class="button button-primary" type="submit">Save changes</button></div>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
